@@ -99,7 +99,3 @@ It should look like this when you set up all Sev-Types.
 It should look like this 
 
 ![15](https://i.imgur.com/MKe9rTz.jpeg)
-
-Update the New Ticket Options and follow the steps above. 
-
-On the [next tutorial](https://github.com/fnabeel/osTicket---Ticket-Lifecycle-Intake-Through-Resolution), we will create Tickets and showcase the Ticket Lifecycle.
