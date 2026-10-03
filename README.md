@@ -25,7 +25,7 @@ This tutorial outlines the post-install configuration of the open-source help de
 - Configure SLAs
 - Configure Help Topics
 
-- <h2>Configuration of Roles</h2>
+### Configuration of Roles
 1. Admin Panel -> Agents -> Roles
 2. Supreme Admin
 
@@ -35,20 +35,20 @@ Create the role Supreme Admin, and give it the accessbility that a supreme admin
 
 ![2](https://i.imgur.com/uwz8rea.png)
 
-- <h2>Configure Departments<h2>
+### Configure Departments
 1. Admin Panel -> Agents -> Departments
 2. System Administrators
 
 ![3](https://i.imgur.com/1AcbOUD.jpeg)
 
-- <h2>Configure Teams<h2>
+### Configure Teams
 1. Admin Panel -> Agents -> Teams
 2. Level I Support
 3. Level II Support
 
 ![4](https://i.imgur.com/HS0toB5.jpeg)
 
-- <h2>Allow anyone to create tickets<h2>
+### Allow Anyone to Create Tickets
 1. Admin Panel -> Settings -> User Settings
 2. Registration Required: Require registration and login to create tickets
 
@@ -56,14 +56,13 @@ Create the role Supreme Admin, and give it the accessbility that a supreme admin
 
 **Feel free to use any name to your liking !**
 
-- <h2>Configure Agents<h2>
+### Configure Agents
 1. Admin Panel -> Agents -> Add New
-2. Layla (I set Layla to be a System Admin and role as Supreme Admin)
-3. Jamari (I set Jamari as Maintenance)
+2. Example agent "Layla" (set as System Admin, role Supreme Admin)
+3. Example agent "Jamari" (set as Maintenance)
 ![6](https://i.imgur.com/VFzN7z3.jpeg)
 
-Unselect " Send the agent a password reset email" , then enter a regular password like "Passsword1" or anything of your liking. 
-Unselect "Require password reset next login" , just to avoid the hassle. 
+Unselect "Send the agent a password reset email", then enter any password of your choosing. Unselect "Require password reset next login" to avoid the extra step.
 
 ![7](https://i.imgur.com/KyLuEAu.jpeg)
 
@@ -75,7 +74,7 @@ Now, Create.
 3. Byleth
 ![8](https://i.imgur.com/La5tV1E.jpeg)
 
-- <h2>Configure SLA<h2>
+### Configure SLA
 1. Admin Panel -> Manage -> SLA
 2. Sev-A (1 hour, 24/7)
 3. Sev-B (4 hours, 24/7)
@@ -86,7 +85,7 @@ Now, Create.
 It should look like this when you set up all Sev-Types.
 ![12](https://i.imgur.com/4eeYZEW.jpeg)
 
-- <h2>Configure Help Topics<h2>
+### Configure Help Topics
 1. Admin Panel -> Manage -> Help Topics
 ![13](https://i.imgur.com/dodgai7.jpeg)
 2. Business Critical Outage
