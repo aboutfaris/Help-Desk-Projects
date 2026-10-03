@@ -23,31 +23,22 @@ This tutorial outlines the lifecycle of a ticket from intake to resolution withi
 
 <h2>Resolutions by Priority</h2>
 
-- 1.Business Critical Outage
-This priority should be set to "Emergency"
+1. Business Critical Outage — priority "Emergency"
+2. Personal Computer Issues — priority "High"
+3. Equipment Request — priority "Normal"
+4. Password Reset — priority "Least"
 
-- 2. Personal Computer Issues
-This priority can be "High"
-
-- 3. Equipement Request
-Normal Priority
-
-- 4. Password Reset
-Least Priority
-
-Login as an Agent, in this case we will login as Layla Mahmoud who is a System Admin we created in the previous tutorial. 
+Log in as an agent. In this example, we log in as Layla Mahmoud, the System Admin agent created in the previous tutorial.
 
 ![0](https://i.imgur.com/hpKyG70.png)
 
-Next we will have a user create a ticket stating that they are unable to access the company website from their mobile device and desktop.
+Next, a user creates a ticket stating that they are unable to access the company website from their mobile device and desktop.
 
 ![1](https://i.imgur.com/tB2j8zo.jpeg)
 
+The ticket is set to Emergency priority, assigned, and resolved by Layla.
 
-The ticket will be an Emergency level, we will asign the ticket, and Layla will resolve this ticket. 
-
-
-We have contacted Dimitri on the outage in a timely manner, kept in communication, and resolved the issue. 
+We contact the reporting user about the outage in a timely manner, keep them updated, and resolve the issue.
 
 
 
