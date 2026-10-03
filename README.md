@@ -29,7 +29,7 @@ The lifecycle has four stages: intake, assignment and communication, working the
 1. Open the osTicket staff login page (`http://localhost/osTicket/scp/login.php` on the VM).
 2. Enter the agent username (for example, `<agent-username>` for Layla) and password, then click Log In.
 
-   Expected result: the Agent Panel opens with the Dashboard, Users, Tasks, Tickets, and Knowledgebase tabs, and the header reads "Welcome, Layla."
+   Expected result: you are signed in to the osTicket Agent Panel.
 
 3. Go to Tickets > New Ticket.
 4. Fill in the form for the reported outage (a user cannot reach the company website from their phone or desktop):
