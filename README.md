@@ -1,107 +1,95 @@
-<p align="center">
-<img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
-</p>
+# osTicket: Prerequisites and Installation
 
-# osTicket - Prerequisites and Installation
+Install the open-source help desk ticketing system osTicket on a Windows 10 virtual machine in Azure, using IIS, PHP, MySQL, and HeidiSQL. osTicket collects requests from email, phone, and web forms into one multi-user web interface where agents manage, organize, and archive them.
 
-Hi, I'm Faris, an IT professional. Welcome to my first tutorial on setting up osTicket. This tutorial outlines the prerequisites and installation of the open-source help desk ticketing system osTicket.
-
-## What Is osTicket?
-
-osTicket is a widely used open-source support ticket system. It integrates inquiries created via email, phone, and web-based forms into a simple, easy-to-use multi-user web interface. Manage, organize, and archive all your support requests and responses in one place while giving your customers the accountability and responsiveness they deserve.
-
-
-## Environments and Technologies Used
+## What you'll use
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Internet Information Services (IIS)
 - HeidiSQL
-
-## Operating Systems Used
-
 - Windows 10 (21H2)
+- osTicket installation files ([download folder](https://drive.google.com/drive/u/0/folders/1APMfNyfNzcxZC6EzdaNfdZsUwxWYChf6))
 
-## List of Prerequisites
+## Prerequisites
 
-- Azure Virtual Machine
-- osTicket installation files
+- An Azure subscription
 
-## Installation Steps
+## Steps
 
-![Create resource group](https://user-images.githubusercontent.com/109401839/212542603-e23e4232-fa2d-461d-9f9e-9da2ca6f5c73.png)
+### Part 1: Create the VM
 
-First, create a Resource Group (RG) in Microsoft Azure. Think of the resource group as a folder. Name this resource group "osTickets". I used US East for my RG; take note of which region you use since future resources will be created in the same region.
+1. In the Azure portal, create a resource group named `osTickets` in East US. Create every later resource in the same region.
+2. Create a virtual machine in that resource group:
+   - Name: `VM-osTicket`
+   - Region: East US
+   - Image: Windows 10 Pro, version 21H2
+   - Size: 4 vCPUs (Standard D4s v3, 16 GiB memory)
+   - Username and password: pick your own and write them down (for example, username `labuser`). Use a strong, unique password in any real deployment.
 
-![Create virtual machine](https://user-images.githubusercontent.com/109401839/212542800-61c916ab-94a8-4e5f-bc6b-8ccdbe768612.png)
+   Expected result: the resource group lists the VM along with the virtual network, public IP address, network security group, and network interface Azure created for it, all in East US.
 
-Now create a virtual machine under the RG. As before, set the VM region to US East. We'll use Windows 10 with 4 vCPUs, and name this VM "VM-osTicket".
+3. Open the VM's Overview page and note its public IP address (`<vm-public-ip>`).
 
-Create a username and password for your VM; you'll log in to it like a regular computer, so take notes to avoid forgetting your login credentials. For this demonstration we use the username `labuser` and a simple lab-only password — in a real deployment, always use a strong, unique password.
+   Expected result: Status shows Running and Operating system shows Windows (Windows 10 Pro).
 
-Now that our machine is ready, we will connect to it using Remote Desktop Connection. Before that, find the VM's public IP address:
+4. On your computer, open Remote Desktop Connection, enter `<vm-public-ip>`, click Connect, and sign in with the VM credentials.
 
-1. Open the VM's overview page in the Azure Portal.
-2. Note the public IP address shown there (for example, `<your-vm-public-ip>`).
+### Part 2: Enable IIS with CGI
 
-This is the address you use to connect to the VM with Remote Desktop Connection:
+5. On the VM, open the Start menu and search for "Turn Windows features on or off".
+6. Expand Internet Information Services > World Wide Web Services > Application Development Features.
+7. Check CGI and click OK.
 
-1. Open "Remote Desktop Connection" on your local machine.
-2. Enter the VM's public IP address.
-3. Click **Connect**.
+   Expected result: Internet Information Services, Web Management Tools, and World Wide Web Services show partially selected boxes, and CGI is checked.
 
-Now that we're connected, let's enable IIS (Internet Information Services). IIS is a Microsoft web server that runs on Windows and is used to exchange static and dynamic web content with internet users. It can host, deploy, and manage web applications using technologies such as ASP.NET and PHP.
+### Part 3: Install PHP, MySQL, and osTicket
 
-Enable IIS with CGI support:
+8. From the installation files, install these in order:
+   - PHP Manager for IIS (`PHPManagerForIIS_V1.5.0.msi`)
+   - IIS Rewrite Module (`rewrite_amd64_en-US.msi`)
+9. Create the folder `C:\PHP` and unzip PHP 7.3.8 (`php-7.3.8-nts-Win32-VC15-x86.zip`) into it.
+10. Install `VC_redist.x86.exe`.
+11. Install MySQL 5.5.62 (`mysql-5.5.62-win32.msi`) and set a root password. Write it down.
+12. Extract osTicket into `C:\inetpub\wwwroot` and rename the extracted `upload` folder to `osTicket`.
 
-1. Open the Start menu and search for "Windows Features".
-2. Expand **Internet Information Services** > **World Wide Web Services** > **Application Development Features**.
-3. Check **CGI** and confirm.
+### Part 4: Configure PHP in IIS
 
-![Enable IIS features](https://user-images.githubusercontent.com/109401839/212543578-18f011ed-b6e4-4d34-9a41-8093904acb3b.png)
+13. Open IIS Manager as an administrator.
+14. In PHP Manager, register PHP using `C:\PHP\php-cgi.exe`.
+15. In PHP Manager, enable these extensions: `php_imap.dll`, `php_intl.dll`, and `php_opcache.dll`.
+16. Reload IIS Manager and go to Sites > Default Web Site > osTicket.
+17. In the right-hand panel, click Browse *:80.
 
-Now [download](https://drive.google.com/drive/u/0/folders/1APMfNyfNzcxZC6EzdaNfdZsUwxWYChf6) the installation files needed for osTicket and HeidiSQL.
+    Expected result: the osTicket installer opens in the browser.
 
-Head to the installation folders and:
+18. Go to `C:\inetpub\wwwroot\osTicket\include\` and rename `ost-sampleconfig.php` to `ost-config.php`.
+19. Right-click `ost-config.php`, open Properties > Security > Advanced, and click Disable inheritance.
+20. Remove the existing permissions and grant Everyone access. This is a lab-only setting; use least-privilege permissions in production.
 
-- Download and install PHP Manager for IIS (`PHPManagerForIIS_V1.5.0.msi`)
-- Download and install the Rewrite Module (`rewrite_amd64_en-US.msi`)
-- Create a directory at `C:\PHP`
-- Download PHP 7.3.8 (`php-7.3.8-nts-Win32-VC15-x86.zip`) and unzip its contents into `C:\PHP`
-- Download and install `VC_redist.x86.exe`
-- Download and install MySQL 5.5.62 (`mysql-5.5.62-win32.msi`)
+### Part 5: Create the database
 
-Next, download osTicket and extract its contents to `C:\inetpub\wwwroot`. Rename the extracted "Upload" folder to "osTicket".
+21. Install HeidiSQL from the installation files ([setup notes](https://docs.google.com/document/d/1WovrX2DaS9xkfaSr4LXyB4YnnWpXIgPCMMbbfgHmGVw/edit)).
+22. Open HeidiSQL and create a new session with user `root` and the MySQL password from step 11.
+23. Connect to the session and create a database named `osTicket`.
 
-Register and configure PHP in IIS:
+### Part 6: Finish the installer
 
-1. Open IIS Manager as an administrator.
-2. Register PHP using the `C:\PHP` folder you created earlier.
-3. In IIS Manager, open PHP Manager and enable the following three extensions: `php_imap.dll`, `php_intl.dll`, and `php_opcache.dll`.
-4. Reload IIS Manager and navigate to **Sites > Default > osTicket**.
-5. On the right-hand panel, click **Browse *:80** to open the osTicket web interface and confirm it loads.
+24. Return to the osTicket installer in the browser and give your help desk a name.
+25. Enter the database settings:
+    - MySQL Database: `osTicket`
+    - MySQL Username: `root`
+    - MySQL Password: the password from step 11
+26. Click Install Now.
 
-Finish the osTicket configuration file setup:
+## What I learned
 
-1. Navigate to `C:\inetpub\wwwroot\osticket\include\`.
-2. Find the file named `ost-sampleconfig.php` and rename it to `ost-config.php`.
-3. Right-click the renamed file, open **Properties**, go to the **Security** tab, and click **Disable Inheritance**.
-4. Remove the existing permissions and grant access to "Everyone" (lab-only setting; use least-privilege permissions in production).
+- osTicket on Windows needs IIS with CGI, PHP registered through PHP Manager, and a MySQL database.
+- Keeping all Azure resources in one resource group and region makes the lab easy to manage and clean up.
+- Open permissions on `ost-config.php` are only for setup; lock them down afterward.
 
-### HeidiSQL
+## Next steps / cleanup
 
-From the [installation files](https://drive.google.com/drive/u/2/folders/1APMfNyfNzcxZC6EzdaNfdZsUwxWYChf6), download and install [HeidiSQL](https://docs.google.com/document/d/1WovrX2DaS9xkfaSr4LXyB4YnnWpXIgPCMMbbfgHmGVw/edit). Then:
-
-1. Open HeidiSQL.
-2. Create a new session using the `root` MySQL account and the password you set during MySQL installation.
-3. Connect to the session.
-4. Create a database named "osTicket".
-
-### Continue Setup in the Browser
-
-Return to the osTicket web interface and name your helpdesk anything you like. Then continue the install wizard with:
-
-- MySQL Database: `osTicket`
-- MySQL Username: `root`
-- MySQL Password: *(the password you set during MySQL installation)*
-- Click **Install Now!**
+- Configure roles, agents, SLAs, and help topics: see [osTicket post-install configuration](https://github.com/aboutfaris/osTicket-Post-Install-Configuration)
+- Work a ticket end to end: see [osTicket ticket lifecycle](https://github.com/aboutfaris/osTicket)
+- When you finish the series, delete the `osTickets` resource group to stop charges.
