@@ -7,7 +7,7 @@ lines, numbered steps with a plain-English legend). Deviations for this repo:
 Azure instead of AWS (official Azure icons from the `diagrams` package), stroke-only
 outline glyphs for software that has no official icon, and no footer or branding.
 
-Run:  /tmp/c340_diag_venv/bin/python architecture_diagram.py /tmp/<name>
+Run:  /tmp/diagram_venv/bin/python architecture_diagram.py /tmp/<name>
 It writes <name>.svg and <name>.png (rendered at 2x) and must print
 "layout problems: none".
 """
@@ -34,7 +34,7 @@ KINDS = {  # stroke, width, dash, arrowhead marker, legend label
 }
 
 # ---------------- canvas text ----------------
-W, H = 1600, 960
+W, H = 1600, 990
 TITLE = "Help Desk Set | osTicket on Azure"
 SUBTITLE = ("A Windows 10 VM in one Azure resource group runs IIS, PHP, MySQL, and osTicket; "
             "the help desk is configured, then one ticket is worked to resolution.")
@@ -177,7 +177,8 @@ SL = [[round(x0 + (x1 - x0) * f) for f in (0.2, 0.5, 0.8)] for x0, x1 in COLS]  
 ROWS = [(150, 470), (510, 654)]                       # group rows (row 1 spans all columns)
 A1, B1, L1 = 250, 380, 580                            # icon lanes (center y)
 XL = 95                                               # external column
-GUT, CHAN = 490, 670                                  # gutter between rows, return channel
+GUT, CHAN = 490, 702                                  # gutter between rows, return channel
+#                                                       (return channel runs below the boundary)
 
 # ---------------- canvas and Azure boundary ----------------
 add(f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
@@ -260,7 +261,7 @@ link("resolve", "b", "user", "b", "external",
 
 # ---------------- line labels (white halo keeps them readable over lines) ----------------
 text(880, GUT - 6, "help topic sets priority, SLA, and assignment", 11.5, 400, TEXT2, halo=True)
-text(880, CHAN + 4, "final reply to the user", 11.5, 400, TEXT2, halo=True)
+text(880, CHAN + 18, "final reply to the user", 11.5, 400, TEXT2)  # beside the line, below it
 text((SL[1][0] + SL[1][1]) / 2, A1 - 8, "CGI", 11.5, 400, TEXT2, halo=True)
 text((SL[1][2] + SL[2][0]) / 2, A1 - 8, "Admin Panel", 11.5, 400, TEXT2, halo=True)
 
@@ -273,7 +274,7 @@ for cx, cy, n in [(165, 222, 1), (654, 222, 2), (941, 352, 3), (1106, 280, 4),
     badge(cx, cy, n)
 
 # ---------------- legend steps, one short sentence each, same order as the badges ----------------
-LY = 726
+LY = 760
 STEPS = [
     "From your computer, Remote Desktop reaches the Windows 10 VM through its public IP.",
     "On the VM, IIS with CGI runs PHP 7.3 (registered in PHP Manager) and serves osTicket.",
