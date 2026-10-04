@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Help Desk Set architecture diagram: osTicket on an Azure Windows VM.
+"""InfoTech Set architecture diagram: osTicket on an Azure Windows VM.
 
 Built from the reference architecture-diagram implementation (one cloud boundary,
 aligned grid of unfilled dashed groups, icons on a shared slot grid, right-angle
@@ -35,7 +35,7 @@ KINDS = {  # stroke, width, dash, arrowhead marker, legend label
 
 # ---------------- canvas text ----------------
 W, H = 1600, 990
-TITLE = "Help Desk Set | osTicket on Azure"
+TITLE = "InfoTech Set | osTicket on Azure"
 SUBTITLE = ("A Windows 10 VM in one Azure resource group runs IIS, PHP, MySQL, and osTicket; "
             "the help desk is configured, then one ticket is worked to resolution.")
 REGION = "resource group osTickets, East US"
