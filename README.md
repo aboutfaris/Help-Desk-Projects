@@ -15,3 +15,7 @@ The diagram shows the Azure VM and web stack from section 01, the configuration 
 ## How to use
 
 Each folder is a standalone follow-along guide with its own prerequisites, numbered steps, and expected results. Work them in order for the full build, or jump into any one on its own. Delete the Azure resource group when you finish to stop charges.
+
+## License
+
+Code and scripts in this repository are licensed under the MIT License (see [LICENSE](LICENSE)). Written guides and diagrams are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party material keeps its original license and is excluded from both.
