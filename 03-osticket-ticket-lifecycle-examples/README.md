@@ -1,4 +1,4 @@
-# osTicket: Ticket Lifecycle from Intake to Resolution
+# osTicket: Ticket Lifecycle Examples
 
 Follow one help desk ticket through osTicket from intake to resolution. The agent Layla, created in the post-install lab, logs in, opens a ticket for a reported outage, and works it through to close.
 
@@ -10,8 +10,8 @@ Follow one help desk ticket through osTicket from intake to resolution. The agen
 
 ## Prerequisites
 
-- osTicket installed: see [osTicket prerequisites and installation](https://github.com/aboutfaris/osticket_prereqs)
-- Roles, departments, teams, agents, users, SLAs, and help topics configured: see [osTicket post-install configuration](https://github.com/aboutfaris/osTicket-Post-Install-Configuration)
+- osTicket installed: see [osTicket prerequisites and installation](../01-osticket-prerequisites-and-installation/)
+- Roles, departments, teams, agents, users, SLAs, and help topics configured: see [osTicket post-install configuration](../02-osticket-post-installation-configuration/)
 
 ## Steps
 
@@ -70,5 +70,5 @@ The lifecycle has four stages: intake, assignment and communication, working the
 
 ## Next steps
 
-- Review the setup: [osTicket prerequisites and installation](https://github.com/aboutfaris/osticket_prereqs)
-- Review the configuration: [osTicket post-install configuration](https://github.com/aboutfaris/osTicket-Post-Install-Configuration)
+- Review the setup: [osTicket prerequisites and installation](../01-osticket-prerequisites-and-installation/)
+- Review the configuration: [osTicket post-install configuration](../02-osticket-post-installation-configuration/)

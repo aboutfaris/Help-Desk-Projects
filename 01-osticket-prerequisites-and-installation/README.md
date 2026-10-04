@@ -90,6 +90,6 @@ Install the open-source help desk ticketing system osTicket on a Windows 10 virt
 
 ## Next steps / cleanup
 
-- Configure roles, agents, SLAs, and help topics: see [osTicket post-install configuration](https://github.com/aboutfaris/osTicket-Post-Install-Configuration)
-- Work a ticket end to end: see [osTicket ticket lifecycle](https://github.com/aboutfaris/osTicket)
+- Configure roles, agents, SLAs, and help topics: see [osTicket post-install configuration](../02-osticket-post-installation-configuration/)
+- Work a ticket end to end: see [osTicket ticket lifecycle](../03-osticket-ticket-lifecycle-examples/)
 - When you finish the series, delete the `osTickets` resource group to stop charges.

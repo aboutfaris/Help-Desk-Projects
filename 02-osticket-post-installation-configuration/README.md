@@ -1,4 +1,4 @@
-# osTicket: Post-Install Configuration
+# osTicket: Post-Installation Configuration
 
 Configure a fresh osTicket install so it is ready for real tickets: roles, departments, teams, user registration, agents, users, SLAs, and help topics.
 
@@ -10,7 +10,7 @@ Configure a fresh osTicket install so it is ready for real tickets: roles, depar
 
 ## Prerequisites
 
-- osTicket installed and reachable at `http://localhost/osTicket/scp/` on the VM: see [osTicket prerequisites and installation](https://github.com/aboutfaris/osticket_prereqs)
+- osTicket installed and reachable at `http://localhost/osTicket/scp/` on the VM: see [osTicket prerequisites and installation](../01-osticket-prerequisites-and-installation/)
 - Logged in to osTicket as the admin account created during install
 
 Most settings live in the Admin Panel. If the header link reads "Admin Panel", click it to switch from the Agent Panel. Names below are examples; use any names you like.
@@ -103,5 +103,5 @@ Most settings live in the Admin Panel. If the header link reads "Admin Panel", c
 
 ## Next steps
 
-- Work a ticket from intake to resolution: see [osTicket ticket lifecycle](https://github.com/aboutfaris/osTicket)
-- Review the install: see [osTicket prerequisites and installation](https://github.com/aboutfaris/osticket_prereqs)
+- Work a ticket from intake to resolution: see [osTicket ticket lifecycle](../03-osticket-ticket-lifecycle-examples/)
+- Review the install: see [osTicket prerequisites and installation](../01-osticket-prerequisites-and-installation/)
