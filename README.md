@@ -2,6 +2,10 @@
 
 Build a working help desk with osTicket on an Azure Windows VM: install it, configure it for real use, and then work a ticket from intake to resolution.
 
+![Help Desk architecture](assets/architecture.png)
+
+The diagram shows the Azure VM and web stack from section 01, the configuration from section 02, and the ticket lifecycle from section 03.
+
 | Section | What you'll build | Folder |
 |---|---|---|
 | osTicket: Prerequisites and Installation | An Azure Windows 10 VM running IIS, PHP, MySQL, and a fresh osTicket install | [01-osticket-prerequisites-and-installation](01-osticket-prerequisites-and-installation/) |
